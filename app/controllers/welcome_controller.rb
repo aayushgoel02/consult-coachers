@@ -1,21 +1,26 @@
 class WelcomeController < ApplicationController
   def index
-
+    dbsize = Question.count
+    flash[:notice] = ""
+    @questionnum = rand(1..dbsize)
   end
 
   def practice
-    @question = Question.find(1)
+    @question = Question.find(params[:question].to_i)
     @numquestions = @question.questiontext.split(";").size
-    @initquestion = @question.questiontext.split(";")[params[:question].to_f]
+    @initquestion = @question.questiontext.split(";")[params[:example].to_i]
+    @examplenum = params[:example].to_i
   end
 
   def check
     @question = Question.find(params[:answerform][:questionnum])
-    @keyword = @question.keywordtext.split(";")[0]
+    @keyword = @question.keywordtext.split(";")[params[:answerform][:examplenum].to_i]
     if @keyword == params[:answerform][:answer]
-      redirect_to practice_path(:question => 1)
+      flash[:notice] = "Correct Answer!"
+      redirect_to practice_path(:question => params[:answerform][:questionnum],:example => params[:answerform][:examplenum].to_i+1)
     else
-      redirect_to practice_path(:question => 0)
+      flash[:notice] = "Wrong Answer!"
+      redirect_to practice_path(:question => params[:answerform][:questionnum],:example => params[:answerform][:examplenum].to_i)
     end
 
   end

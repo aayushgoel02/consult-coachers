@@ -1,15 +1,20 @@
 <h1>Practice a question</h1>
-
+<% if @examplenum == @numquestions %>
+<p> Question completed! Try another question </p>
+<%= link_to "Home page",root_path %>
+<% else %>
 <p id="question_space"><%= @initquestion %></p>
 <br/>
-<textarea id="answer_space" rows="10" cols="50"></textarea>
-<br/><br/>
 
-<br/><br/>
-<p id="message_space"></p>
-<br/><br/>
 <%= form_for :answerform do |f| %>
-<%= f.hidden_field :questionnum, :value => 1%>
+<%= f.hidden_field :questionnum, :value => @question.id%>
+<%= f.hidden_field :examplenum, :value => @examplenum%>
 <%= f.text_area :answer %><br/>
-<%= f.submit "Ruby Check" %>
+<%= f.submit "Check!" %>
+
+<% end %>
+<br/><br/>
+<% if flash[:notice] %>
+<p id="message_space"><%= flash[:notice]%></p>
+<% end %>
 <% end %>

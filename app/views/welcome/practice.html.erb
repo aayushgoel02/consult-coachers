@@ -4,6 +4,12 @@
 <br/>
 <textarea id="answer_space" rows="10" cols="50"></textarea>
 <br/><br/>
-//<%= button_tag "Check!", type: "button", onclick: "myFunc("+"\""+@question.questiontext++"\""+","+"\""+@question.keywordtext+"\""+")" %>
+
 <br/><br/>
 <p id="message_space"></p>
+<br/><br/>
+<%= form_for :answerform do |f| %>
+<%= f.hidden_field :questionnum, :value => 1%>
+<%= f.text_area :answer %><br/>
+<%= f.submit "Ruby Check" %>
+<% end %>

@@ -17,14 +17,17 @@ class WelcomeController < ApplicationController
     @keyword = @question.keywordtext.split(";")[params[:answerform][:examplenum].to_i]
     if @keyword == params[:answerform][:answer]
       respond_to do |format|
-        format.js
+        format.js { render :action => "correct"}
         #format.html {render partial: "check_result"}
       end
       #flash[:notice] = "Correct Answer!"
       #redirect_to practice_path(:question => params[:answerform][:questionnum],:example => params[:answerform][:examplenum].to_i+1)
     else
-      flash[:notice] = "Wrong Answer!"
-      redirect_to practice_path(:question => params[:answerform][:questionnum],:example => params[:answerform][:examplenum].to_i)
+      respond_to do |format|
+        format.js { render :action => "wrong"}
+      end
+      #flash[:notice] = "Wrong Answer!"
+      #redirect_to practice_path(:question => params[:answerform][:questionnum],:example => params[:answerform][:examplenum].to_i)
     end
 
   end

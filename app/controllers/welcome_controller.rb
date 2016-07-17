@@ -16,8 +16,12 @@ class WelcomeController < ApplicationController
     @question = Question.find(params[:answerform][:questionnum])
     @keyword = @question.keywordtext.split(";")[params[:answerform][:examplenum].to_i]
     if @keyword == params[:answerform][:answer]
-      flash[:notice] = "Correct Answer!"
-      redirect_to practice_path(:question => params[:answerform][:questionnum],:example => params[:answerform][:examplenum].to_i+1)
+      respond_to do |format|
+        format.js
+        #format.html {render partial: "check_result"}
+      end
+      #flash[:notice] = "Correct Answer!"
+      #redirect_to practice_path(:question => params[:answerform][:questionnum],:example => params[:answerform][:examplenum].to_i+1)
     else
       flash[:notice] = "Wrong Answer!"
       redirect_to practice_path(:question => params[:answerform][:questionnum],:example => params[:answerform][:examplenum].to_i)

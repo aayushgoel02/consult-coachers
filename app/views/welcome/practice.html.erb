@@ -6,7 +6,7 @@
 <p id="question_space"><%= @initquestion %></p>
 <br/>
 
-<%= form_for :answerform do |f| %>
+<%= form_for :answerform, remote: true do |f| %>
 <%= f.hidden_field :questionnum, :value => @question.id%>
 <%= f.hidden_field :examplenum, :value => @examplenum%>
 <%= f.text_area :answer %><br/>
@@ -16,5 +16,6 @@
 <br/><br/>
 <% if flash[:notice] %>
 <p id="message_space"><%= flash[:notice]%></p>
+<div id="display_result"></div>
 <% end %>
 <% end %>

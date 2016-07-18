@@ -5,8 +5,9 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   #
   root 'welcome#index'
-  get 'practice' => 'welcome#practice'
-  post 'practice' => 'welcome#check'
+  get 'value-chain' => 'vchain#index'
+  get 'value-chain/practice' => 'vchain#practice'
+  post 'value-chain/practice' => 'vchain#check'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

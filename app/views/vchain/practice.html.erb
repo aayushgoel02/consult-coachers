@@ -1,7 +1,8 @@
 <h1>Practice a question</h1>
 <% if @examplenum == @numquestions %>
 <p> Question completed! Try another question </p>
-<%= link_to "Home page",root_path %>
+<%= link_to "Value Chain Practice",value_chain_path %>
+<%= link_to "Home Page", root_path %>
 <% else %>
 <p id="question_space"><%= @initquestion %></p>
 <br/>
@@ -13,7 +14,7 @@
 <%= f.submit "Check!", id: "check_button" %>
 
 <% end %>
-<%= link_to "Continue", practice_path(:question => @question.id, :example => @examplenum.to_i + 1), id: "next_link",style: "display: none"%>
+<%= link_to "Continue", value_chain_practice_path(:question => @question.id, :example => @examplenum.to_i + 1), id: "next_link",style: "display: none"%>
 <br/><br/>
 <div id="display_result"></div>
 <% end %>

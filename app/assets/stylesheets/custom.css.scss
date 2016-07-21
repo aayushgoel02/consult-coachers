@@ -1,2 +1,43 @@
+
+$navbar-default-bg: #dcdbda;
+
+
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,700");
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+.navbar{
+  margin-bottom: 0;
+}
+
+.jumbotron{
+  background-image: asset-url("cover-image.jpg");
+  background-size: 100% 100%;
+  height: 500px;
+  background-repeat: no-repeat;
+}
+
+.jumbotron .bg-overlay{
+  height: 550px;
+  top:0;
+  left:0;
+  right:0;
+  down:0;
+  position:absolute;
+  background : rgba(0,0,0,0.6);
+  z-index:1;
+}
+
+.jumbotron .main_content{
+  position: relative;
+  text-align: center;
+  z-index: 2;
+}
+
+#main_text{
+  color: white;
+  font-size: 48px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 900;
+}
+

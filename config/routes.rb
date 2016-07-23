@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   #
   root 'welcome#index'
+  get 'show' => 'show#index'
   get 'value-chain' => 'vchain#index'
   get 'value-chain/practice' => 'vchain#practice'
   post 'value-chain/practice' => 'vchain#check'

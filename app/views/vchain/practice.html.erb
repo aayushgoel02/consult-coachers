@@ -1,20 +1,38 @@
-<h1>Practice a question</h1>
-<% if @examplenum == @numquestions %>
-<p> Question completed! Try another question </p>
-<%= link_to "Value Chain Practice",value_chain_path %>
-<%= link_to "Home Page", show_path %>
-<% else %>
-<p id="question_space"><%= @initquestion %></p>
 <br/>
-
-<%= form_for :answerform, remote: true do |f| %>
-<%= f.hidden_field :questionnum, :value => @question.id%>
-<%= f.hidden_field :examplenum, :value => @examplenum%>
-<%= f.text_area :answer %><br/>
-<%= f.submit "Check!", id: "check_button" %>
-
+<h1 class="center comp-heading">PRACTICE CASE</h1>
+<br/>
+<% if @examplenum == @numquestions %>
+<div class="center">
+<p> Question completed! Try another question </p> <br/>
+<%= link_to value_chain_path, class:"btn btn-danger btn-xlg" do %>
+<i class="fa fa-chain-broken" style="font-size:25px;"></i>&emsp; <span style="font-size:20px;">Value Chain</span>
 <% end %>
-<%= link_to "Continue", value_chain_practice_path(:question => @question.id, :example => @examplenum.to_i + 1), id: "next_link",style: "display: none"%>
+&emsp; &emsp;
+<%= link_to show_path, class:"btn btn-primary btn-xlg" do %>
+<i class="fa fa-home" style="font-size:25px;"></i>&emsp; <span style="font-size:20px;">Home</span>
+<% end %>
+<br/><br/><br/><br/><br/>
+<br/><br/><br/><br/><br/>
+<br/><br/><br/><br/><br/>
+<% else %>
+
+<div class="equal">
+  <div class="col-md-4"></div>
+  <div class="col-md-4 center">
+    <br/>
+    <%= form_for :answerform, remote: true do |f| %>
+    <%= f.hidden_field :questionnum, :value => @question.id%>
+    <%= f.hidden_field :examplenum, :value => @examplenum%>
+    <%= f.label :labelquestion, @initquestion, id:"question_space", style: "font-size: 18px;" %>
+    <br/><br/>
+    <%= f.text_area :answer, class: "form-control", rows: "10" %><br/>
+    <%= f.submit "Check!", id: "check_button",class: "btn btn-success btn-xlg" %>
+    <%= link_to "Continue", value_chain_practice_path(:question => @question.id, :example => @examplenum.to_i + 1), id: "next_link",style: "display: none", class: "btn btn-success btn-xlg"%>
 <br/><br/>
-<div id="display_result"></div>
+    <div id="display_result"><br/><br/></div>
+    <% end %>
+  </div>
+  <div class="col-md-4"></div>
+</div>
 <% end %>
+<br/>

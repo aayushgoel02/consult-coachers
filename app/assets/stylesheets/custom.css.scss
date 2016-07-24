@@ -32,6 +32,10 @@ $navbar-default-bg: #dcdbda;
   width: 200px;
 }
 
+.btn-xlg2{
+  width: 150px;
+}
+
 .center{
   text-align: center;
 }
@@ -70,4 +74,9 @@ $navbar-default-bg: #dcdbda;
 
 .footer-div{
   background: #EEE;
+}
+
+.equal {
+  display: flex;
+  flex-wrap: wrap;
 }

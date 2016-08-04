@@ -14,11 +14,14 @@ class VchainController < ApplicationController
   def check
     @question = Vchainquestion.find(params[:answerform][:questionnum])
     @keyword = @question.keywordtext.split(";")[params[:answerform][:examplenum].to_i]
+    @text = "A";
     if @keyword == params[:answerform][:answer]
+      @text = "Correct answer!"
       respond_to do |format|
         format.js { render :action => "correct"}
       end
     else
+      @text = "Wrong Answer!"
       respond_to do |format|
         format.js { render :action => "wrong"}
       end

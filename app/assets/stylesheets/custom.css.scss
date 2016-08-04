@@ -10,6 +10,10 @@ $navbar-default-bg: #dcdbda;
   margin-bottom: 0;
 }
 
+.navbar-logo{
+  height: 50px;
+  width: 70px;
+}
 .jumbotron_image{
   background-image: asset-url("cover-image.jpg");
   background-size: 100% 100%;
@@ -49,6 +53,7 @@ $navbar-default-bg: #dcdbda;
 .comp-heading{
   font-family: "Montserrat", sans-serif;
 }
+
 
 .feature_text{
   font-size: 24px;

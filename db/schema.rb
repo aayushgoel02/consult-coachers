@@ -11,9 +11,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160718121646) do
+ActiveRecord::Schema.define(version: 20160804200403) do
 
-  create_table "vchainquestions", force: :cascade do |t|
+  create_table "questions", force: :cascade do |t|
     t.text     "questiontext"
     t.text     "keywordtext"
     t.datetime "created_at"

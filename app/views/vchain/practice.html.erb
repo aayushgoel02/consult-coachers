@@ -1,7 +1,7 @@
 <br/>
 <h1 class="center comp-heading">PRACTICE CASE</h1>
 <br/>
-<% if @examplenum == @numquestions %>
+<% if @ordernum == @numquestions+1 %>
 <div class="center">
 <br/>
 <h4 class="comp-heading"> Question completed! Try another question. </h4> <br/>
@@ -22,13 +22,13 @@
   <div class="col-md-4 center">
     <br/>
     <%= form_for :answerform, remote: true do |f| %>
-    <%= f.hidden_field :questionnum, :value => @question.id%>
-    <%= f.hidden_field :examplenum, :value => @examplenum%>
+    <%= f.hidden_field :questionnum, :value => @question.questionnumber%>
+    <%= f.hidden_field :ordernum, :value => @ordernum%>
     <%= f.label :labelquestion, @initquestion, id:"question_space", style: "font-size: 18px;" %>
     <br/><br/>
     <%= f.text_area :answer, class: "form-control", rows: "10" %><br/>
     <%= f.submit "Check!", id: "check_button",class: "btn btn-success btn-xlg" %>
-    <%= link_to "Continue", value_chain_practice_path(:question => @question.id, :example => @examplenum.to_i + 1), id: "next_link",style: "display: none", class: "btn btn-success btn-xlg"%>
+    <%= link_to "Continue", value_chain_practice_path(:questionnum => @question.questionnumber, :ordernum => @ordernum.to_i + 1), id: "next_link",style: "display: none", class: "btn btn-success btn-xlg"%>
 <br/><br/>
     <div id="display_result"><br/><br/></div>
     <% end %>

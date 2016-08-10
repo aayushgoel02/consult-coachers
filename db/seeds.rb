@@ -5,6 +5,8 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-Question.create(questiontext: "Why is this hot?;Why is this cold?",keywordtext: "Hot;Cold")
-Question.create(questiontext: "What is my name?;What is my surname",keywordtext: "Aayush;Goel")
+Question.create(module: "Value Chain", questionnumber: 1, ordernumber: 1, questiontype: 1, question: "What would you like to investigate?", options: "Production;Distribution;Retail;Consumer", answer: "Production", suggestions: "Correct Choice!;No problem in distribution;No problem in retail;No problem on consumer end")
+Question.create(module: "Value Chain", questionnumber: 1, ordernumber: 2, questiontype: 2, question: "Why is the factory not producing enough candy?", answer: "Shut down", suggestions: "Correct Answer!;Wrong answer.")
+Question.create(module: "Value Chain", questionnumber: 2, ordernumber: 1, questiontype: 1, question: "What would you like to investigate?", options: "Production;Distribution;Retail;Consumer", answer: "Retail", suggestions: "No problem in production;No problem in distribution;Correct Choice!;No problem on consumer end")
+Question.create(module: "Value Chain", questionnumber: 2, ordernumber: 2, questiontype: 2, question: "Why is retailer not selling client's brand of beer?", answer: "Cheaper beer", suggestions: "Correct Answer!;Wrong answer.")
 

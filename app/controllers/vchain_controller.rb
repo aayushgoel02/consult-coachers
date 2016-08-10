@@ -12,27 +12,57 @@ class VchainController < ApplicationController
     @question = @questions.where("ordernumber = "+params[:ordernum]).first
     @ordernum = params[:ordernum].to_i
     @initquestion = "A"
+    @options = "A";
+    begin
+      @options = @question.options.split(";")
+    rescue
+    end
     begin
       @initquestion = @question.question
     rescue
-
     end
   end
 
   def check
     @questiontot = Question.where("module = 'Value Chain'")
-    @question = @questiontot.where("questionnumber = "+params[:answerform][:questionnum]+" AND ordernumber = "+params[:answerform][:ordernum]).first
-    @answer = @question.answer
-    @text = "A";
-    if @answer == params[:answerform][:answer]
-      @text = "Correct answer!"
-      respond_to do |format|
-        format.js { render :action => "correct"}
+    begin
+      @question = @questiontot.where("questionnumber = "+params[:questionnum]+" AND ordernumber = "+params[:ordernum]).first
+      @options = @question.options.split(";")
+      @suggestions = @question.suggestions.split(";")
+      @answer = @question.answer
+      @text = "A";
+      @correct = 0;
+      if @answer == @options[params[:choice].to_i]
+        @text = @suggestions[params[:choice].to_i]
+        @correct = 1;
+        respond_to do |format|
+          format.js { render :action => "correct"}
+        end
+      else
+        @text = @suggestions[params[:choice].to_i]
+        @correct = 0;
+        respond_to do |format|
+          format.js { render :action => "correct"}
+        end
       end
-    else
-      @text = "Wrong Answer!"
-      respond_to do |format|
-        format.js { render :action => "wrong"}
+    rescue
+      @question = @questiontot.where("questionnumber = "+params[:answerform][:questionnum]+" AND ordernumber = "+params[:answerform][:ordernum]).first
+      @suggestions = @question.suggestions.split(";")
+      @answer = @question.answer
+      @text = "A";
+      @correct = 0;
+      if @answer == params[:answerform][:answer]
+        @text = @suggestions[0]
+        @correct = 1
+        respond_to do |format|
+          format.js { render :action => "correct"}
+        end
+      else
+        @text = @suggestions[1]
+        @correct = 0
+        respond_to do |format|
+          format.js { render :action => "correct"}
+        end
       end
     end
 

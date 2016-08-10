@@ -1,3 +1,12 @@
-$("#display_result").html("<p><%= @text %></p><br/>");
-$("#next_link").show();
-$("#check_button").hide();
+$("#display_result").html("<%="Interviewer remarks: "+ @text %>");
+<% if @question.questiontype == 1 %>
+   <% if @correct == 1 %>
+    $("input[type=submit]").attr("disabled", "disabled");
+    $("#next_link").show();
+  <% end %>
+<% else %>
+  <% if @correct == 1 %>
+    $("#next_link").show();
+    $("#check_button").hide();
+  <% end %>
+<% end %>
